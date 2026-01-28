@@ -24,9 +24,11 @@ if st.button("Prediksi Nilai TKA"):
         columns=['jam_belajar_per_hari', 'persen_kehadiran', 'bimbel']
     )
 
-    prediksi = model.predict(data_baru)
+    prediksi = model.predict(data_baru)[0]
+	prediksi = prediksi.clip(0,100)
 
     st.success(f"📊 Prediksi Nilai TKA: **{prediksi[0]:.0f}**")
     st.balloons()  # 🎈 tambahan di sini
 
 st.divider()
+
